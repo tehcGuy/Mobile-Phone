@@ -21,7 +21,8 @@ public class MobilePhone {
         this.myNumber = myNumber;
         this.myContacts = new ArrayList<>();
     }
-//exemplary way of doing the method
+
+    //exemplary way of doing the method
     public boolean addNewContact(Contact newContact) {
         if(findContact(newContact.getContactName()) >= 0) { //using getContactName from Contact class
             System.out.println("Contact already present");
@@ -47,6 +48,7 @@ public class MobilePhone {
             return false;
         }
         this.myContacts.remove(index); //or ? .remove(contact)
+        System.out.println("Contact is deleted");
         return true;
     }
 
@@ -57,11 +59,16 @@ public class MobilePhone {
     //he did this differently
     //check whether my implemetnation works
     private int findContact(String searchedContact) { //return the index position
-        if(this.myContacts.contains(searchedContact))   //String is an object, thus, it is possible to use .contains()
-        return (this.myContacts.indexOf(searchedContact));
+        if(this.myContacts.contains(searchedContact)) {   //String is an object, thus, it is possible to use .contains()
+            int index = this.myContacts.indexOf(searchedContact);
+            return index;
+        }
+        System.out.println("Contact was not found");
+        return -1;
     }
 
-    public Contact queryContact(Contact contactName) {
+    // implement 2 findContact methods
+    public String queryContact(Contact contactName) {
         if(findContact(contactName) >= 0) {
             return contactName.getContactName();                         //which Contact instance
         }
@@ -69,6 +76,15 @@ public class MobilePhone {
     }
 
     public void printContacts() {
+        System.out.println("Printing all contacs");
+        for(int i = 0; i < myContacts.size(); i++) {
+            System.out.println((i + 1) + ". " + myContacts.get(i).getContactName()
+            +" -> "+myContacts.get(i).getContactNumber());
+        }
+    }
+}
+
+//    public void printContacts() {
 /*has no parameters and doesn't return anything. Print the contacts in the following format:
 
 Contact List:
@@ -77,10 +93,9 @@ Contact List:
 3. Tom -> 11235813
 4. Jane -> 23571113
 */
-    }
 
 
-}
+//}
 
 // Create a program that implements a simple mobile phone with the following capabilities.
 // Able to store, modify, remove and query contact names.
