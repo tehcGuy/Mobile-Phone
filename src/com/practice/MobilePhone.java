@@ -38,6 +38,7 @@ public class MobilePhone {
             return false;
         }
         this.myContacts.set(this.myContacts.indexOf(oldContact), newContact);
+        System.out.println("Contact is updated");
         return true;
     }
 
