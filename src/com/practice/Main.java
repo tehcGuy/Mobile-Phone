@@ -14,7 +14,7 @@ public class Main {
             scanner.nextLine(); //handling "Enter" key
             switch(choice) {
                 case 0:
-                    menu();
+                    Main.menu();
                     break;
                 case 1:
                     mobilePhone.printContacts();
@@ -23,11 +23,11 @@ public class Main {
                     Main.update();
                     break;*/
                 case 3:
-                    add();
+                    Main.add();
                     break;
-/*                case 4:
-                    mobilePhone.removeContact();
-                    break;*/
+                case 4:
+//                    mobilePhone.removeContact();
+                    break;
 /*                case 5:
                     find();
                     break;*/
@@ -39,13 +39,18 @@ public class Main {
             }
         }
     }
-/*
-    public static void update() {
-        String personName = scanner.nextLine();
-        String personPhone = scanner.nextLine();
 
-        mobilePhone.updateContact()
+    /*public static void remove() {
+        String c = scanner.nextLine();
+        mobilePhone.removeContact(c);
     }*/
+    /*
+        public static void update() {
+            String personName = scanner.nextLine();
+            String personPhone = scanner.nextLine();
+
+            mobilePhone.updateContact()
+        }*/
 
     public static void add() {
         System.out.println("add name");
@@ -53,7 +58,10 @@ public class Main {
         System.out.println("add number");
         String personPhone = scanner.nextLine();
 
-        Contact.createContact(personName, personPhone);
+        Contact newContact = Contact.createContact(personName, personPhone);
+        mobilePhone.addNewContact(newContact);
+        System.out.println("New contact with " + personName + " name, and (" + personPhone + ") phone number was added");
+
     }
 
     static public void menu() {
