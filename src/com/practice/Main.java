@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static Scanner scanner = new Scanner(System.in);
-    private static MobilePhone mobilePhone = new MobilePhone("+1 559");
+    private static MobilePhone mobilePhone = new MobilePhone();
 
     public static void main(String[] args) {
         boolean quit = false;
@@ -39,6 +39,7 @@ public class Main {
             }
         }
     }
+
     public static void find() {
         System.out.println("Enter name of existing contact name that you want to find:");
         String personName = scanner.nextLine();
@@ -46,11 +47,8 @@ public class Main {
 
         if(toFind == null) {
             System.out.println("Contact is not found");
-            return;
-        }
-        else{
+        } else {
             System.out.println("Contact is found");
-            return;
         }
     }
 
