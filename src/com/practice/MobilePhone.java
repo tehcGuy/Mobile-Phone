@@ -52,18 +52,27 @@ public class MobilePhone {
         return true;
     }
 
+    public void printContacts() {
+        System.out.println("Printing all contacs");
+        for(int i = 0; i < myContacts.size(); i++) {
+            System.out.println((i + 1) + ". " + myContacts.get(i).getContactName()
+                    + " -> " + myContacts.get(i).getContactNumber());
+        }
+//get(i) gets the object (name, number). to retrieve a name I need to have .getContactName() also.
+// get(i)  without .getContactName() will give me only the address to an object
+    }
+
     private int findContact(Contact searchedContact) {
         return this.myContacts.indexOf(searchedContact);
     }
 
-    //he did this differently
-    //check whether my implemetnation works
-    private int findContact(String searchedContact) { //return the index position
-        if(this.myContacts.contains(searchedContact)) {   //String is an object, thus, it is possible to use .contains()
-            int index = this.myContacts.indexOf(searchedContact);
-            return index;
+    private int findContact(String searchedContact) {
+        for(int i=0; i<this.myContacts.size(); i++) {
+            Contact contact = this.myContacts.get(i);
+            if(contact.getContactName().equals(searchedContact)) {
+                return i;
+            }
         }
-        System.out.println("Contact was not found");
         return -1;
     }
 
@@ -75,13 +84,14 @@ public class MobilePhone {
         return null;
     }
 
-    public void printContacts() {
-        System.out.println("Printing all contacs");
-        for(int i = 0; i < myContacts.size(); i++) {
-            System.out.println((i + 1) + ". " + myContacts.get(i).getContactName()
-            +" -> "+myContacts.get(i).getContactNumber());
+    public Contact queryContact(String contactName) {
+        int index = findContact(contactName);
+        if(findContact(contactName) >= 0) {
+            return myContacts.get(index);                         //which Contact instance
         }
+        return null;
     }
+
 }
 
 //    public void printContacts() {

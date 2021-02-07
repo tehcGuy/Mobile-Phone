@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static Scanner scanner = new Scanner(System.in);
-    private static MobilePhone mobilePhone = new MobilePhone("+1 559 931 5423");
+    private static MobilePhone mobilePhone = new MobilePhone("+1 559");
 
     public static void main(String[] args) {
         boolean quit = false;
@@ -19,9 +19,9 @@ public class Main {
                 case 1:
                     mobilePhone.printContacts();
                     break;
-/*                case 2:
+                case 2:
                     Main.update();
-                    break;*/
+                    break;
                 case 3:
                     Main.add();
                     break;
@@ -39,28 +39,40 @@ public class Main {
             }
         }
     }
-
-    /*public static void remove() {
+/*    public static void remove() {
         String c = scanner.nextLine();
         mobilePhone.removeContact(c);
     }*/
-    /*
         public static void update() {
+            System.out.println("Enter name of existing contact:");
             String personName = scanner.nextLine();
+            Contact oldContact = mobilePhone.queryContact(personName);
+
+            if(oldContact == null){
+                System.out.println("Contact not found");
+                return;
+            }
+
+            System.out.println("Enter a new contact name");
+            personName = scanner.nextLine();
+
+            System.out.println("Enter a new contact phone");
             String personPhone = scanner.nextLine();
 
-            mobilePhone.updateContact()
-        }*/
+            Contact newContact = Contact.createContact(personName, personPhone);
+            mobilePhone.updateContact(oldContact, newContact);
+        }
 
-    public static void add() {
+    public static Contact add() {
         System.out.println("add name");
         String personName = scanner.nextLine();
         System.out.println("add number");
         String personPhone = scanner.nextLine();
 
-        Contact newContact = Contact.createContact(personName, personPhone);
+        Contact newContact = Contact.createContact(personName, personPhone); // !!newContact will be deleted after the method will had ran
         mobilePhone.addNewContact(newContact);
         System.out.println("New contact with " + personName + " name, and (" + personPhone + ") phone number was added");
+        return  newContact;
 
     }
 
