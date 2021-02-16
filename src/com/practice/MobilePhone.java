@@ -43,10 +43,14 @@ public class MobilePhone {
 
 
     public void printContacts() {
-        System.out.println("Printing all contacs");
-        for(int i = 0; i < myContacts.size(); i++) {
-            System.out.println((i + 1) + ". " + myContacts.get(i).getName()
-                    + " -> " + myContacts.get(i).getPhoneNumber());
+        System.out.println("Printing all contacts");
+        if(myContacts.size() == 0) {
+            System.out.println("NO CONTACTS");
+        } else {
+            for(int i = 0; i < myContacts.size(); i++) {
+                System.out.println((i + 1) + ". " + myContacts.get(i).getName()
+                        + " -> " + myContacts.get(i).getPhoneNumber());
+            }
         }
 //get(i) gets the object (name, number). to retrieve a name I need to have .getContactName() also.
 // get(i)  without .getContactName() will give me only the address to an object
@@ -63,6 +67,7 @@ public class MobilePhone {
         return -1;
     }
 
+    //    basically find method for public. it allows to manipulate this myContacts from Main class
     public Contact queryContact(String contactName) {
         int index = findContact(contactName);
         if(findContact(contactName) >= 0) {

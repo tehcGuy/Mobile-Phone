@@ -2,7 +2,7 @@ package com.practice;
 //this class is a blueprint for myContacs ArrayList from the class MobilePhone
 
 public class Contact {
-    private String name = new String(); //redundant
+    private String name = new String(); //redundant. yet, leave it as it is. It is an exemplary what is going on under Java's hood
     private String phoneNumber = new String();
 
     public Contact(String name, String phoneNumber) {
