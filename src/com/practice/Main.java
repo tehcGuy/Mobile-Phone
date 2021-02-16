@@ -46,6 +46,7 @@ public class Main {
     public static Scanner scanner = new Scanner(System.in);
     private static MobilePhone mobilePhone = new MobilePhone("559"); //add a number
 
+//    this getter is needed in order to access the mobilePhone object from the Method Class!
     public static MobilePhone getMobilePhone() {
         return mobilePhone;
     }
