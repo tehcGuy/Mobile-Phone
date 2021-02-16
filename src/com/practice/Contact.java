@@ -1,23 +1,24 @@
 package com.practice;
+//this class is a blueprint for myContacs ArrayList from the class MobilePhone
 
 public class Contact {
-    private String contactName;
-    private String contactNumber;
+    private String name = new String(); //redundant
+    private String phoneNumber = new String();
 
-    public Contact(String contactName, String contactNumber) {
-        this.contactName = contactName;
-        this.contactNumber = contactNumber;
+    public Contact(String name, String phoneNumber) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getContactName() {
-        return contactName;
+    public String getName() {
+        return name;
     }
 
-    public String getContactNumber() {
-        return contactNumber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     static public Contact createContact(String personName, String phoneNumber) {
-        return new Contact(personName, phoneNumber);
+        return new Contact(personName, phoneNumber); //initiating a new instance
     }
 }
